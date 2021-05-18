@@ -182,6 +182,7 @@ Sujets réalisés par Stéphane Gonnord/Laurent Jouhet/Frédéric Junier/Stépha
 
 
 * TP BDD 1 : 
+  * [Memento SQL](https://codi-lyon.beta.education.fr/GMedgMDXQBaXHMhlErJLPw#)
   * [Énoncé et corrigé](https://codi-lyon.beta.education.fr/s/GdHWcZ8ik#)
 
   
