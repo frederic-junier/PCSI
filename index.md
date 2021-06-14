@@ -185,4 +185,10 @@ Sujets réalisés par Stéphane Gonnord/Laurent Jouhet/Frédéric Junier/Stépha
   * [Memento SQL](https://codi-lyon.beta.education.fr/GMedgMDXQBaXHMhlErJLPw#)
   * [Énoncé et corrigé](https://codi-lyon.beta.education.fr/s/GdHWcZ8ik#)
 
+* TP Mines 2016:
+    * [énoncé](TP-Mines-2016/mines-info-2016e.pdf)
+    * [fichier python élève](TP-Mines-2016/mines_2016_eleves.py)
+    * [corrigé pdf](TP-Mines-2016/Mines-Info-2016.pdf)
+    * [Jupyter Notebook avec corrigé](https://mybinder.org/v2/gh/frederic-junier/PCSI/master?filepath=TP-Mines-2016/Mines-Info-2016.ipynb)  
+
   
