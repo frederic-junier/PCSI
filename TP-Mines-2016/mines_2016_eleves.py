@@ -134,3 +134,131 @@ def euler2(f:Callable, N:int)->[[float],np.ndarray]:
         XX.append(X)
     return tt, np.array(XX)
 
+#%%
+
+#Q14
+
+import numpy as np
+
+def h(t, mu, sigma):
+    """Fonction de densité de la loi normale centrée réduite d'espérance mu
+    et d'écart-type sigma"""
+    return 1/(sigma * np.sqrt(2*np.pi))*np.exp(-((t -mu) / sigma)**2/2)
+
+
+def f2(X:[float], Itau:float, r:float, a:float, b:float)->np.ndarray:  
+    """Fonction définissant l'équation différentielle dX/dt = f(X)
+    Paramètres :
+        r, a, b : de type flottant, taux de contagion, guérison, mortalité
+        Itau est la valeur de integrale(0,tau, I(t-s)*h(s))
+        X = (S,I,R,D) de type liste de flottants
+    Valeur renvoyée : de type array
+    """
+    (S, I, R, D) = X
+    return np.array([-r*S*Itau, r*S*Itau - (a + b)*I, a*I, b*I])
+
+
+def euler3(f:Callable, N:int)->([float],[np.ndarray]):
+    # Parametres
+    tmax = 25.      #temps maximal
+    r = 1.          #taux de contagion
+    a = 0.4         #taux de guérison
+    b = 0.1         #taux de mortalité
+    X0 = np.array([0.95, 0.05, 0., 0.])
+ 
+    #initialisation du schéma d'Euler
+    dt = tmax/N      #pas de temps du schéma d'Euler    
+    p = 50           #nombre de pas de retard
+    t = 0
+    X = X0
+    tt = [t]
+    XX = [X]
+    
+    #paramètres de la fonction de densité
+    mu = (p * dt) / 2  #espérance (moitié de tau = (p *dt) / 2)
+    sigma = (p * dt) / 6 #écart-type (tiers  de esperance / 2)
+    # Schéma d’Euler
+    for i in range(N):
+        t = t + dt
+        #à compléter
+        tt.append(t)
+        XX.append(X)
+    return tt, XX
+
+#%%
+
+#Partie III Modélisation dans des grilles
+
+#Q15
+
+def grille(n) :
+    """Spécifier cette fonction en complétant sa docstring :
+    Paramètres(type, sémantique):
+    Valeur renvoyée (type, sémantique):
+    """"
+    M = []
+    for i in range(n) :
+        L=[]
+        for j in range(n): L.append(0)
+        M.append(L)
+    return M
+
+#%%
+#Q16
+
+#à compléter
+
+
+#%%
+#Q18 et Q19
+
+def est_exposee(G, i, j):
+    """Retourne un booleen indiquant si une case en ligne i et colonne j
+    comporte  au moins une case infectée dans son voisinage """
+    n = len(G)
+    if i == 0 and j == 0:
+        return (G[0][1]-1)*(G[1][1]-1)*(G[1][0]-1) == 0
+    elif i == 0 and j == n-1:
+        return (G[0][n-2]-1)*(G[1][n-2]-1)*(G[1][n-1]-1) == 0
+    elif i == n-1 and j == 0:
+        return (G[n-1][1]-1)*(G[n-2][1]-1)*(G[n-2][0]-1) == 0
+    elif i == n-1 and j == n-1:
+        return (G[n-1][n-2]-1)*(G[n-2][n-2]-1)*(G[n-2][n-1]-1) == 0
+    elif i == 0:
+        "à compléter"
+    elif i == n-1:
+        return (G[n-1][j-1]-1)*(G[n-2][j-1]-1)*(G[n-2][j]-1)*(G[n-2][j+1]-1)*(G[n-1][j+1]-1) == 0
+    elif j == 0:
+        return (G[i-1][0]-1)*(G[i-1][1]-1)*(G[i][1]-1)*(G[i+1][1]-1)*(G[i+1][0]-1) == 0
+    elif j == n-1:
+        return (G[i-1][n-1]-1)*(G[i-1][n-2]-1)*(G[i][n-2]-1)*(G[i+1][n-2]-1)*(G[i+1][n-1]-1) == 0
+    else:
+        "à compléter"
+
+
+#%%
+
+#Q20
+
+import random as rd
+
+def bernoulli(p):
+    if rd.random() <= p:
+        return 1
+    return 0
+
+
+#%%
+
+#Q21
+
+
+#%%
+#Q22 
+#Représenter un graphique similaire à la figure 3 
+#(évolution de la proportion de la population atteinte en fonction de p2 pour p1 = 0.5)
+#en calculant la moyenne des résultats de plusieurs simulations pour différentes valeurs de p2
+
+
+#%%
+#Q23 Dichotomie
